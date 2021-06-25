@@ -18,7 +18,8 @@ vim.cmd [[colo tokyonight]]
 
 -- Treesitter
 local ts = require 'nvim-treesitter.configs'
-ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
+ts.setup {ensure_installed = { 'c', 'cpp', 'python', 'lua', 'clojure', 'javascript', 'typescript', 'tsx' }, 
+            highlight = {enable = true}}
 
 -- LSP, stole from https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
 local nvim_lsp = require("lspconfig")
