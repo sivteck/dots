@@ -1,1 +1,2 @@
--- dummy init.lua
+require('core.keymaps')
+require('core.settings')
