@@ -1,4 +1,10 @@
--- inspired by https://github.com/martinsione/dotfiles
+-- References:
+-- https://github.com/nanotee/nvim-lua-guide
+-- https://github.com/martinsione/dotfiles
+
 require('core.keymaps')
-require('core.settings')
 require('core.plugins')
+require('core.settings')
+
+
+

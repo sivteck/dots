@@ -8,3 +8,12 @@ vim.cmd('packadd paq-nvim')
 local paq = require('paq-nvim').paq
 paq {'savq/paq-nvim', opt = true}
 
+-- Theme
+paq { 'folke/tokyonight.nvim' }
+
+-- Editor
+paq { 'tpope/vim-commentary' } -- use 'gcc', 'gcap'
+
+-- Treesitter
+paq { 'nvim-treesitter/nvim-treesitter' }
+paq { 'JoosepAlviste/nvim-ts-context-commentstring' }
