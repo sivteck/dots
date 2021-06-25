@@ -20,3 +20,7 @@ paq { 'neovim/nvim-lspconfig' }
 -- Treesitter
 paq { 'nvim-treesitter/nvim-treesitter' }
 paq { 'JoosepAlviste/nvim-ts-context-commentstring' }
+
+-- Autocomplete
+paq { 'hrsh7th/nvim-compe' }
+paq { 'hrsh7th/vim-vsnip' }
