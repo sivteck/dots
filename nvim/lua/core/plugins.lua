@@ -14,6 +14,9 @@ paq { 'folke/tokyonight.nvim' }
 -- Editor
 paq { 'tpope/vim-commentary' } -- use 'gcc', 'gcap'
 
+-- LSP
+paq { 'neovim/nvim-lspconfig' }
+
 -- Treesitter
 paq { 'nvim-treesitter/nvim-treesitter' }
 paq { 'JoosepAlviste/nvim-ts-context-commentstring' }
