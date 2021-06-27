@@ -8,4 +8,10 @@ npm install -g typescript typescript-language-server diagnostic-languageserver e
 ```
 ln -s $HOME/projects/dots/nvim $HOME/.config/
 ```
+3. Setup LuaSnip
+
+
+### References:
+1. https://github.com/nanotee/nvim-lua-guide
+2. https://github.com/martinsione/dotfiles
 

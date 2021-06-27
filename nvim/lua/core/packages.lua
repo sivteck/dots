@@ -8,11 +8,13 @@ vim.cmd('packadd paq-nvim')
 local paq = require('paq-nvim').paq
 paq {'savq/paq-nvim', opt = true}
 
+
 -- Theme
 paq { 'folke/tokyonight.nvim' }
 
 -- Editor
 paq { 'tpope/vim-commentary' } -- use 'gcc', 'gcap'
+paq { 'L3MON4D3/LuaSnip' }
 
 -- LSP
 paq { 'neovim/nvim-lspconfig' }
@@ -23,4 +25,8 @@ paq { 'JoosepAlviste/nvim-ts-context-commentstring' }
 
 -- Autocomplete
 paq { 'hrsh7th/nvim-compe' }
-paq { 'hrsh7th/vim-vsnip' }
+
+-- Telescope
+paq { 'nvim-lua/popup.nvim' }
+paq { 'nvim-lua/plenary.nvim' } -- Lua Utils
+paq { 'nvim-telescope/telescope.nvim' }

@@ -12,14 +12,31 @@ set('softtabstop=2')
 set('expandtab')
 set('noshiftround')
 
+-- Buffer
+set('hidden')
+
 -- Theme
 vim.g.tokyonight_style = 'storm'
 vim.cmd [[colo tokyonight]]
 
+
+-- Telescope
+local telescope = require('telescope.builtin')
+vim.api.nvim_set_keymap('n', 'ff', ":Telescope find_files<CR>", { silent = true })
+vim.api.nvim_set_keymap('n', 'fs', ":Telescope live_grep<CR>", { silent = true })
+vim.api.nvim_set_keymap('n', ';', ":Telescope buffers<CR>", { silent = true })
+
 -- Treesitter
 local ts = require 'nvim-treesitter.configs'
-ts.setup {ensure_installed = { 'c', 'cpp', 'python', 'lua', 'clojure', 'javascript', 'typescript', 'tsx' }, 
+ts.setup { ensure_installed = { 'c', 'cpp', 'python', 'lua', 'clojure', 'javascript', 'typescript', 'tsx' }, 
             highlight = {enable = true}}
+-- search params, var, imports
+vim.api.nvim_set_keymap('n', 'ft', ":Telescope treesitter<CR>", { silent = true })
+
+-- Git
+-- git status with diffs via Telescope
+vim.api.nvim_set_keymap('n', 'gs', ":Telescope git_status<CR>", { silent = true })
+
 
 -- LSP, stole from https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
 local nvim_lsp = require("lspconfig")
@@ -59,7 +76,7 @@ local on_attach = function(client, bufnr)
     vim.cmd(
         "command! LspDiagLine lua vim.lsp.diagnostic.show_line_diagnostics()")
     vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
-buf_map(bufnr, "n", "gd", ":LspDef<CR>", {silent = true})
+    buf_map(bufnr, "n", "gd", ":LspDef<CR>", {silent = true})
     buf_map(bufnr, "n", "gr", ":LspRename<CR>", {silent = true})
     buf_map(bufnr, "n", "gR", ":LspRefs<CR>", {silent = true})
     buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>", {silent = true})
@@ -129,15 +146,11 @@ nvim_lsp.diagnosticls.setup {
 
 -- Autocomplete
 -- use .ts snippets in .tsx files
-vim.g.vsnip_filetypes = {
-    typescriptreact = {"typescript"}
-}
 require"compe".setup {
     preselect = "always",
     source = {
         path = true,
         buffer = true,
-        vsnip = true,
         nvim_lsp = true,
         nvim_lua = true
     }
@@ -148,8 +161,8 @@ end
 _G.tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return vim.fn["compe#confirm"]()
-    elseif vim.fn.call("vsnip#available", {1}) == 1 then
-        return t("<Plug>(vsnip-expand-or-jump)")
+    --elseif vim.fn.call("vsnip#available", {1}) == 1 then
+    --    return t("<Plug>(vsnip-expand-or-jump)")
     else
         return t("<Tab>")
     end
