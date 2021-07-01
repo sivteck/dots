@@ -19,6 +19,8 @@ set('hidden')
 vim.g.tokyonight_style = 'storm'
 vim.cmd [[colo tokyonight]]
 
+-- Statusline
+
 
 -- Telescope
 local telescope = require('telescope.builtin')
@@ -35,8 +37,28 @@ vim.api.nvim_set_keymap('n', 'ft', ":Telescope treesitter<CR>", { silent = true 
 
 -- Git
 -- git status with diffs via Telescope
-vim.api.nvim_set_keymap('n', 'gs', ":Telescope git_status<CR>", { silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>gs', ":Telescope git_status<CR>", { silent = true })
+require('gitsigns').setup {
+  signs = {
+    add = {hl = 'GitSignsAdd', text = '+'},
+    change = {hl = 'GitSignsChange', text = '~'},
+    delete = {hl = 'GitSignsDelete', text = '-'},
+  },
+  keymaps = {
+    noremap = true,
+    buffer = true,
 
+    ['n <Leader>nh'] = {expr = true, '&diff ? \']g\' : \'<cmd>lua require"gitsigns".next_hunk()<CR>\''},
+    ['n <Leader>ph'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".prev_hunk()<CR>\''},
+    ['n <Leader>sh'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".stage_hunk()<CR>\''},
+    ['n <Leader>ush'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".undo_stage_hunk()<CR>\''},
+
+    ['n <Leader>gd'] = '<cmd>lua require"gitsigns".diffthis()<CR>',
+    ['n <Leader>gb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
+  },
+  current_line_blame = true,
+  current_line_blame_delay = 200,
+}
 
 -- LSP, stole from https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
 local nvim_lsp = require("lspconfig")
@@ -106,6 +128,8 @@ nvim_lsp.tsserver.setup {
 local filetypes = {
     typescript = "eslint",
     typescriptreact = "eslint",
+    javascript = "eslint",
+    javascriptreact = "eslint",
 }
 local linters = {
     eslint = {
@@ -126,12 +150,16 @@ local linters = {
         securities = {[2] = "error", [1] = "warning"}
     }
 }
+
 local formatters = {
-    prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}
+    prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}},
+    prettierEslint = {command = "prettier-eslint", args = {"--stdin"}}
 }
 local formatFiletypes = {
     typescript = "prettier",
-    typescriptreact = "prettier"
+    javascript = "prettierEslint",
+    typescriptreact = "prettier",
+    javascriptreact = "prettierEslint"
 }
 nvim_lsp.diagnosticls.setup {
     on_attach = on_attach,

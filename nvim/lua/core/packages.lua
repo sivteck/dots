@@ -12,6 +12,9 @@ paq {'savq/paq-nvim', opt = true}
 -- Theme
 paq { 'folke/tokyonight.nvim' }
 
+-- StatusLine
+-- paq { 'glepnir/galaxyline.nvim' }
+
 -- Editor
 paq { 'tpope/vim-commentary' } -- use 'gcc', 'gcap'
 paq { 'L3MON4D3/LuaSnip' }
@@ -30,3 +33,6 @@ paq { 'hrsh7th/nvim-compe' }
 paq { 'nvim-lua/popup.nvim' }
 paq { 'nvim-lua/plenary.nvim' } -- Lua Utils
 paq { 'nvim-telescope/telescope.nvim' }
+
+-- Git
+paq { 'lewis6991/gitsigns.nvim' }
