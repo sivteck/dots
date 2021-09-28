@@ -36,3 +36,8 @@ paq { 'nvim-telescope/telescope.nvim' }
 
 -- Git
 paq { 'lewis6991/gitsigns.nvim' }
+
+-- Emmet
+paq { 'mattn/emmet-vim' }
+
+
