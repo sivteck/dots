@@ -27,7 +27,12 @@ paq { 'nvim-treesitter/nvim-treesitter' }
 paq { 'JoosepAlviste/nvim-ts-context-commentstring' }
 
 -- Autocomplete
-paq { 'hrsh7th/nvim-compe' }
+paq { 'hrsh7th/nvim-cmp' }
+paq { 'hrsh7th/cmp-nvim-lsp' }
+paq { 'hrsh7th/cmp-buffer' }
+paq { 'hrsh7th/cmp-path' }
+paq { 'hrsh7th/cmp-cmdline' }
+paq { 'hrsh7th/nvim-cmp' }
 
 -- Telescope
 paq { 'nvim-lua/popup.nvim' }
@@ -35,9 +40,7 @@ paq { 'nvim-lua/plenary.nvim' } -- Lua Utils
 paq { 'nvim-telescope/telescope.nvim' }
 
 -- Git
-paq { 'lewis6991/gitsigns.nvim' }
+-- paq { 'lewis6991/gitsigns.nvim' }
 
 -- Emmet
 paq { 'mattn/emmet-vim' }
-
-
