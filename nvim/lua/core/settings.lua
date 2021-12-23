@@ -38,27 +38,27 @@ vim.api.nvim_set_keymap('n', 'ft', ":Telescope treesitter<CR>", { silent = true 
 -- Git
 -- git status with diffs via Telescope
 vim.api.nvim_set_keymap('n', '<Leader>gs', ":Telescope git_status<CR>", { silent = true })
--- require('gitsigns').setup {
---   signs = {
---     add = {hl = 'GitSignsAdd', text = '+'},
---     change = {hl = 'GitSignsChange', text = '~'},
---     delete = {hl = 'GitSignsDelete', text = '-'},
---   },
---   keymaps = {
---     noremap = true,
---     buffer = true,
--- 
---     ['n <Leader>nh'] = {expr = true, '&diff ? \']g\' : \'<cmd>lua require"gitsigns".next_hunk()<CR>\''},
---     ['n <Leader>ph'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".prev_hunk()<CR>\''},
---     ['n <Leader>sh'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".stage_hunk()<CR>\''},
---     ['n <Leader>ush'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".undo_stage_hunk()<CR>\''},
--- 
---     ['n <Leader>gd'] = '<cmd>lua require"gitsigns".diffthis()<CR>',
---     ['n <Leader>gb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
---   },
---   current_line_blame = true,
---   current_line_blame_delay = 200,
--- }
+require('gitsigns').setup {
+  signs = {
+    add = {hl = 'GitSignsAdd', text = '+'},
+    change = {hl = 'GitSignsChange', text = '~'},
+    delete = {hl = 'GitSignsDelete', text = '-'},
+  },
+  keymaps = {
+    noremap = true,
+    buffer = true,
+
+    ['n <Leader>nh'] = {expr = true, '&diff ? \']g\' : \'<cmd>lua require"gitsigns".next_hunk()<CR>\''},
+    ['n <Leader>ph'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".prev_hunk()<CR>\''},
+    ['n <Leader>sh'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".stage_hunk()<CR>\''},
+    ['n <Leader>ush'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".undo_stage_hunk()<CR>\''},
+
+    ['n <Leader>gd'] = '<cmd>lua require"gitsigns".diffthis()<CR>',
+    ['n <Leader>gb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
+  },
+  current_line_blame = true,
+  current_line_blame_delay = 200,
+}
 
 local nvim_lsp = require("lspconfig")
 local cmp = require("cmp")
@@ -125,8 +125,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-
-
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -140,3 +138,10 @@ nvim_lsp['solargraph'].setup {
   capabilities = capabilities,
   on_attach = on_attach
 }
+
+nvim_lsp['tsserver'].setup {
+  on_attach = on_attach
+}
+
+-- IDE? setup
+require('litee').setup({})

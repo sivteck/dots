@@ -40,7 +40,15 @@ paq { 'nvim-lua/plenary.nvim' } -- Lua Utils
 paq { 'nvim-telescope/telescope.nvim' }
 
 -- Git
--- paq { 'lewis6991/gitsigns.nvim' }
+paq { 'lewis6991/gitsigns.nvim' }
 
 -- Emmet
 paq { 'mattn/emmet-vim' }
+
+-- Ruby
+paq { 'tpope/vim-rails' }
+paq { 'tpope/vim-bundler' }
+paq { 'tpope/vim-dispatch' }
+
+-- IDE?
+paq { 'ldelossa/litee.nvim' }
