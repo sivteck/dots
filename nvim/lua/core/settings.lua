@@ -144,4 +144,4 @@ nvim_lsp['tsserver'].setup {
 }
 
 -- IDE? setup
-require('litee').setup({})
+-- require('litee').setup({})
