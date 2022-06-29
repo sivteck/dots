@@ -1,12 +1,15 @@
 TODO
 ----
-1. Figure out a way to not install node packages globally, as of we do,
+1. Figure out a way to automate installation of dependencies
 ```
 # for JS
 npm install -g typescript typescript-language-server diagnostic-languageserver eslint_d
 # for Ruby
 gem install solargraph
 gem install neovim
+# additional deps
+brew install ripgrep
+brew install fd
 ```
 2. Generalize config directory instead of,
 ```
