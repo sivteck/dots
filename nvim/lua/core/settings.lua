@@ -57,7 +57,7 @@ require('gitsigns').setup {
     ['n <Leader>gb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
   },
   current_line_blame = true,
-  current_line_blame_delay = 200,
+  current_line_blame_opts = { delay = 200 }
 }
 
 local nvim_lsp = require("lspconfig")
@@ -145,3 +145,6 @@ nvim_lsp['tsserver'].setup {
 
 -- IDE? setup
 -- require('litee').setup({})
+
+-- Splits
+require("focus").setup()
