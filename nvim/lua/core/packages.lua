@@ -42,8 +42,10 @@ require "paq" {
   "tpope/vim-dispatch",
 
 -- Auto-resize splits
-  "beauwilliams/focus.nvim"
+  "beauwilliams/focus.nvim",
 
+-- DAP
+  "mfussenegger/nvim-dap",
 -- IDE?
 --  "ldelossa/litee.nvim",
 }

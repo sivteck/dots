@@ -1,5 +1,6 @@
 vim.api.nvim_set_keymap('i', 'df', '<Esc>', { noremap = true })
-vim.g.mapleader = ","
+vim.g.mapleader = " "
+
 
 vim.api.nvim_exec(
 [[

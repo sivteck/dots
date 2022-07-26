@@ -30,7 +30,7 @@ vim.api.nvim_set_keymap('n', ';', ":Telescope buffers<CR>", { silent = true })
 
 -- Treesitter
 local ts = require 'nvim-treesitter.configs'
-ts.setup { ensure_installed = { 'c', 'cpp', 'python', 'lua', 'clojure', 'javascript', 'typescript', 'tsx' }, 
+ts.setup { ensure_installed = { 'c', 'cpp', 'python', 'lua', 'clojure', 'javascript', 'typescript', 'tsx', 'go', 'ruby' }, 
             highlight = {enable = true}}
 -- search params, var, imports
 vim.api.nvim_set_keymap('n', 'ft', ":Telescope treesitter<CR>", { silent = true })
@@ -62,6 +62,25 @@ require('gitsigns').setup {
 
 local nvim_lsp = require("lspconfig")
 local cmp = require("cmp")
+
+-- DAP
+local dap = require('dap')
+dap.adapters.ruby = {
+  type = 'executable';
+  command = 'bundle';
+  args = {'exec', 'readapt', 'serve'};
+}
+
+dap.configurations.ruby = {
+  {
+    type = 'ruby';
+    request = 'launch';
+    name = 'Rails';
+    program = 'bundle';
+    programArgs = {'exec', 'rails', 's'};
+    useBundler = true;
+  },
+}
 
 cmp.setup({
   snippet = {
