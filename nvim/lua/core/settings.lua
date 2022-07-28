@@ -16,7 +16,9 @@ set('noshiftround')
 set('hidden')
 
 -- Theme
-vim.g.tokyonight_style = 'storm'
+vim.g.tokyonight_style = 'night'
+--vim.g.gruvbox_contrast_dark = 'hard'
+--vim.g.gruvbox_termcolors = 256 
 vim.cmd [[colo tokyonight]]
 
 -- Statusline
@@ -63,7 +65,9 @@ require('gitsigns').setup {
 local nvim_lsp = require("lspconfig")
 local cmp = require("cmp")
 
--- DAP
+-- dap
+
+
 local dap = require('dap')
 dap.adapters.ruby = {
   type = 'executable';
@@ -150,7 +154,8 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 local servers = {
   'solargraph',
-  'tsserver'
+  'tsserver',
+  'gopls'
 }
 
 nvim_lsp['solargraph'].setup {
@@ -159,6 +164,10 @@ nvim_lsp['solargraph'].setup {
 }
 
 nvim_lsp['tsserver'].setup {
+  on_attach = on_attach
+}
+
+nvim_lsp['gopls'].setup {
   on_attach = on_attach
 }
 

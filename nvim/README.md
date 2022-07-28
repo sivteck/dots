@@ -4,11 +4,17 @@ TODO
 ```
 # for JS
 npm install -g typescript typescript-language-server diagnostic-languageserver eslint_d
+
 # for Ruby
 gem install solargraph
 gem install solargraph-rails
 gem install debug 
 gem install neovim
+
+# for Go
+brew install gopls
+brew install delve
+
 # additional deps
 brew install ripgrep
 brew install fd
@@ -21,7 +27,8 @@ ln -s $HOME/projects/dots/nvim $HOME/.config/
 
 ## Random things
 
-1. `:help rtp` for runtime paths
+1. `rtp` for runtime paths
+2. `ap` around paragraphs
 
 ### References:
 1. https://github.com/nanotee/nvim-lua-guide

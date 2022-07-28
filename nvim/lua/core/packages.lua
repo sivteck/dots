@@ -2,6 +2,7 @@ require "paq" {
   "savq/paq-nvim",                  -- Let Paq manage itself
 -- Theme
   "folke/tokyonight.nvim",
+  "morhetz/gruvbox",
 
 -- StatusLine
 --   "glepnir/galaxyline.nvim"
@@ -46,6 +47,8 @@ require "paq" {
 
 -- DAP
   "mfussenegger/nvim-dap",
+  "rcarriga/nvim-dap-ui",
+  "leoluz/nvim-dap-go",
 -- IDE?
 --  "ldelossa/litee.nvim",
 }
