@@ -16,10 +16,13 @@ set('noshiftround')
 set('hidden')
 
 -- Theme
-vim.g.tokyonight_style = 'night'
---vim.g.gruvbox_contrast_dark = 'hard'
---vim.g.gruvbox_termcolors = 256 
-vim.cmd [[colo tokyonight]]
+-- vim.g.tokyonight_style = 'night'
+-- vim.g.gruvbox_contrast_dark = 'hard'
+-- vim.g.gruvbox_termcolors = 256 
+-- vim.cmd [[colo tokyonight]]
+
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd("colorscheme gruvbox")
 
 -- Statusline
 
@@ -32,7 +35,7 @@ vim.api.nvim_set_keymap('n', ';', ":Telescope buffers<CR>", { silent = true })
 
 -- Treesitter
 local ts = require 'nvim-treesitter.configs'
-ts.setup { ensure_installed = { 'c', 'cpp', 'python', 'lua', 'clojure', 'javascript', 'typescript', 'tsx', 'go', 'ruby' }, 
+ts.setup { ensure_installed = { 'c', 'cpp', 'python', 'lua', 'clojure', 'javascript', 'typescript', 'tsx', 'go', 'ruby', 'vim' }, 
             highlight = {enable = true}}
 -- search params, var, imports
 vim.api.nvim_set_keymap('n', 'ft', ":Telescope treesitter<CR>", { silent = true })
@@ -146,16 +149,17 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local servers = {
   'solargraph',
   'tsserver',
-  'gopls'
+  'gopls',
+  'clangd'
 }
 
 nvim_lsp['solargraph'].setup {
@@ -168,6 +172,10 @@ nvim_lsp['tsserver'].setup {
 }
 
 nvim_lsp['gopls'].setup {
+  on_attach = on_attach
+}
+
+nvim_lsp['clangd'].setup {
   on_attach = on_attach
 }
 
