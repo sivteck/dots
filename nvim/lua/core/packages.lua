@@ -33,6 +33,7 @@ require "paq" {
 
 -- Git
   "lewis6991/gitsigns.nvim",
+  "ruifm/gitlinker.nvim",
 
 -- Emmet
   "mattn/emmet-vim",
