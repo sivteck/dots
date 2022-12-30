@@ -16,13 +16,13 @@ set('noshiftround')
 set('hidden')
 
 -- Theme
--- vim.g.tokyonight_style = 'night'
+vim.g.tokyonight_style = 'storm'
 -- vim.g.gruvbox_contrast_dark = 'hard'
 -- vim.g.gruvbox_termcolors = 256 
--- vim.cmd [[colo tokyonight]]
+vim.cmd [[colo tokyonight]]
 
-vim.o.background = "dark" -- or "light" for light mode
-vim.cmd("colorscheme gruvbox")
+-- vim.o.background = "dark" -- or "light" for light mode
+-- vim.cmd("colorscheme gruvbox")
 
 -- Statusline
 
