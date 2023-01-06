@@ -16,21 +16,13 @@ set('noshiftround')
 set('hidden')
 
 -- Theme
--- vim.g.tokyonight_style = 'night'
--- vim.g.gruvbox_contrast_dark = 'hard'
--- vim.g.gruvbox_termcolors = 256 
--- vim.cmd [[colo tokyonight]]
-
-vim.o.background = "dark" -- or "light" for light mode
-vim.cmd("colorscheme gruvbox")
-
--- Statusline
-
+vim.g.tokyonight_style = 'night'
+vim.cmd [[colo tokyonight]]
 
 -- Telescope
 local telescope = require('telescope.builtin')
-vim.api.nvim_set_keymap('n', 'ff', ":Telescope find_files<CR>", { silent = true })
-vim.api.nvim_set_keymap('n', 'fs', ":Telescope live_grep<CR>", { silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>ff', ":Telescope find_files<CR>", { silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>fs', ":Telescope live_grep<CR>", { silent = true })
 vim.api.nvim_set_keymap('n', ';', ":Telescope buffers<CR>", { silent = true })
 
 -- Treesitter
@@ -163,22 +155,12 @@ local servers = {
   'clangd'
 }
 
-nvim_lsp['solargraph'].setup {
-  capabilities = capabilities,
-  on_attach = on_attach
-}
-
-nvim_lsp['tsserver'].setup {
-  on_attach = on_attach
-}
-
-nvim_lsp['gopls'].setup {
-  on_attach = on_attach
-}
-
-nvim_lsp['clangd'].setup {
-  on_attach = on_attach
-}
+for _,server in ipairs(servers) do
+  nvim_lsp[server].setup {
+    capabilities = capabilities,
+    on_attach = on_attach
+  }
+end
 
 -- IDE? setup
 -- require('litee').setup({})
