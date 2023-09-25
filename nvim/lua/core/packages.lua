@@ -3,6 +3,7 @@ require "paq" {
 
 -- Theme
   "folke/tokyonight.nvim",
+  "nvim-tree/nvim-web-devicons",
 
 -- Editor
   "tpope/vim-commentary", -- use "gcc", "gcap"
@@ -52,4 +53,7 @@ require "paq" {
   "leoluz/nvim-dap-go",
 -- IDE?
 --  "ldelossa/litee.nvim",
+  "folke/trouble.nvim",
+  { "michaelb/sniprun", run = 'sh ./install.sh'}
+  -- dccsillag/magma-nvim jupyter in nvim
 }
