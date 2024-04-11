@@ -41,18 +41,18 @@ require('gitsigns').setup {
     change = {hl = 'GitSignsChange', text = '~'},
     delete = {hl = 'GitSignsDelete', text = '-'},
   },
-  keymaps = {
-    noremap = true,
-    buffer = true,
+  -- keymaps = {
+  --   noremap = true,
+  --   buffer = true,
 
-    ['n <Leader>nh'] = {expr = true, '&diff ? \']g\' : \'<cmd>lua require"gitsigns".next_hunk()<CR>\''},
-    ['n <Leader>ph'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".prev_hunk()<CR>\''},
-    ['n <Leader>sh'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".stage_hunk()<CR>\''},
-    ['n <Leader>ush'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".undo_stage_hunk()<CR>\''},
+  --   ['n <Leader>nh'] = {expr = true, '&diff ? \']g\' : \'<cmd>lua require"gitsigns".next_hunk()<CR>\''},
+  --   ['n <Leader>ph'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".prev_hunk()<CR>\''},
+  --   ['n <Leader>sh'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".stage_hunk()<CR>\''},
+  --   ['n <Leader>ush'] = {expr = true, '&diff ? \'[g\' : \'<cmd>lua require"gitsigns".undo_stage_hunk()<CR>\''},
 
-    ['n <Leader>gd'] = '<cmd>lua require"gitsigns".diffthis()<CR>',
-    ['n <Leader>gb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
-  },
+  --   ['n <Leader>gd'] = '<cmd>lua require"gitsigns".diffthis()<CR>',
+  --   ['n <Leader>gb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
+  -- },
   current_line_blame = true,
   current_line_blame_opts = { delay = 200 }
 }
@@ -140,6 +140,7 @@ local on_attach = function(client, bufnr)
 
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap("n", "gi", '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap("n", "gr", '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.format { async = true }<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
@@ -167,3 +168,5 @@ end
 
 -- Splits
 require("focus").setup()
+
+require("rainbow_csv").setup()

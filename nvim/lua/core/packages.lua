@@ -54,6 +54,9 @@ require "paq" {
 -- IDE?
 --  "ldelossa/litee.nvim",
   "folke/trouble.nvim",
-  { "michaelb/sniprun", run = 'sh ./install.sh'}
+  { "michaelb/sniprun", run = 'sh ./install.sh'},
   -- dccsillag/magma-nvim jupyter in nvim
+  --
+  -- csv
+  'cameron-wags/rainbow_csv.nvim'
 }
