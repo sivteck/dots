@@ -25,6 +25,10 @@ vim.api.nvim_set_keymap('n', '<Leader>ff', ":Telescope find_files<CR>", { silent
 vim.api.nvim_set_keymap('n', '<Leader>fs', ":Telescope live_grep<CR>", { silent = true })
 vim.api.nvim_set_keymap('n', ';', ":Telescope buffers<CR>", { silent = true })
 
+-- LLM!
+vim.api.nvim_set_keymap('n', '<Leader>ia', ":Gen Ask<CR>", { silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>ir', ":Gen Ask<CR>", { silent = true })
+
 -- Treesitter
 local ts = require 'nvim-treesitter.configs'
 ts.setup { ensure_installed = { 'c', 'cpp', 'python', 'lua', 'clojure', 'javascript', 'typescript', 'tsx', 'go', 'ruby', 'vim' }, 
