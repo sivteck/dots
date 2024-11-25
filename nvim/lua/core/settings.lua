@@ -36,11 +36,6 @@ vim.api.nvim_set_keymap('n', 'ft', ":Telescope treesitter<CR>", { silent = true 
 -- git status with diffs via Telescope
 vim.api.nvim_set_keymap('n', '<Leader>gs', ":Telescope git_status<CR>", { silent = true })
 require('gitsigns').setup {
-  signs = {
-    add = {hl = 'GitSignsAdd', text = '+'},
-    change = {hl = 'GitSignsChange', text = '~'},
-    delete = {hl = 'GitSignsDelete', text = '-'},
-  },
   -- keymaps = {
   --   noremap = true,
   --   buffer = true,
@@ -56,6 +51,10 @@ require('gitsigns').setup {
   current_line_blame = true,
   current_line_blame_opts = { delay = 200 }
 }
+
+vim.api.nvim_set_hl(0, 'GitSignsAdd', { link = 'GitSignsAdd' })
+vim.api.nvim_set_hl(0, 'GitSignsChange', { link = 'GitSignsChange' })
+vim.api.nvim_set_hl(0, 'GitSignsDelete', { link = 'GitSignsDelete' })
 
 local nvim_lsp = require("lspconfig")
 local cmp = require("cmp")
@@ -151,7 +150,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 
 local servers = {
   'solargraph',
-  'tsserver',
+  'ts_ls',
   'gopls',
   'clangd',
 }
