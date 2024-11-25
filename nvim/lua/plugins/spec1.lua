@@ -1,6 +1,4 @@
-require "paq" {
-  "savq/paq-nvim",                  -- Let Paq manage itself
-
+return {
 -- Theme
   "folke/tokyonight.nvim",
   "nvim-tree/nvim-web-devicons",
