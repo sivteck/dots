@@ -27,12 +27,10 @@ vim.api.nvim_set_keymap('n', ';', ":Telescope buffers<CR>", { silent = true })
 
 -- LLM!
 vim.api.nvim_set_keymap('n', '<Leader>ia', ":Gen Ask<CR>", { silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>ir', ":Gen Ask<CR>", { silent = true })
+vim.api.nvim_set_keymap('x', '<Leader>ir', ":Gen Review_Code<CR>", { silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>ic', ":Gen Chat<CR>", { silent = true })
 
 -- Treesitter
-local ts = require 'nvim-treesitter.configs'
-ts.setup { ensure_installed = { 'c', 'cpp', 'python', 'lua', 'clojure', 'javascript', 'typescript', 'tsx', 'go', 'ruby', 'vim' }, 
-            highlight = {enable = true}}
 -- search params, var, imports
 vim.api.nvim_set_keymap('n', 'ft', ":Telescope treesitter<CR>", { silent = true })
 

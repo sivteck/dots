@@ -10,7 +10,20 @@ return {
   "neovim/nvim-lspconfig",
 
 -- Treesitter
-  "nvim-treesitter/nvim-treesitter",
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function () 
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
+          ensure_installed = {  'c', 'cpp', 'python', 'lua', 'clojure', 'javascript', 'typescript', 'tsx', 'go', 'ruby', 'vim' }, 
+          sync_install = false,
+          highlight = { enable = true },
+          indent = { enable = true },  
+        })
+    end
+  },
   "JoosepAlviste/nvim-ts-context-commentstring",
 
 -- Autocomplete
@@ -87,5 +100,12 @@ return {
         debug = false -- Prints errors and the command which is run.
 
       }
+  },
+  {
+    "AdiY00/copy-tree.nvim",
+    cmd = { "CopyTree", "SaveTree" },
+    config = function()
+      require("copy-tree").setup()
+    end
   }
 }
