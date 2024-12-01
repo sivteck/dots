@@ -44,9 +44,17 @@ return {
   "nvim-telescope/telescope.nvim",
 
 -- Git
-  "lewis6991/gitsigns.nvim",
-  "ruifm/gitlinker.nvim",
-
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      numhl = true,
+      sign_priority = 15, -- higher than diagnostic,todo signs. lower than dapui breakpoint sign
+    },
+  },
+  {
+	  "chrisgrieser/nvim-tinygit",
+	  dependencies = "stevearc/dressing.nvim",
+  },
 -- Emmet
   "mattn/emmet-vim",
 

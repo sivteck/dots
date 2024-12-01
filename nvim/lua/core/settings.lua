@@ -58,6 +58,8 @@ vim.api.nvim_set_hl(0, 'GitSignsAdd', { link = 'GitSignsAdd' })
 vim.api.nvim_set_hl(0, 'GitSignsChange', { link = 'GitSignsChange' })
 vim.api.nvim_set_hl(0, 'GitSignsDelete', { link = 'GitSignsDelete' })
 
+vim.keymap.set("x", "<Leader>gl", function() require("tinygit").githubUrl() end)
+
 local nvim_lsp = require("lspconfig")
 local cmp = require("cmp")
 
